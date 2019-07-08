@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-04T00:39:07.443Z</updated>
+  <updated>2019-07-08T12:06:04.658Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录常见问题</title>
+    <link href="http://yoursite.com/2019/07/08/%E8%AE%B0%E5%BD%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2019/07/08/记录常见问题/</id>
+    <published>2019-07-08T11:48:56.000Z</published>
+    <updated>2019-07-08T12:06:04.658Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;<strong>这个模块主要是用来记录一些经常遇见的常见问题，以免每次遇见同样的问题都必须像第一次遇见一样重复处理。</strong></p><h3 id="一-hexo-博客迁移以及-github-同步"><a href="#一-hexo-博客迁移以及-github-同步" class="headerlink" title="一.hexo 博客迁移以及 github 同步"></a>一.hexo 博客迁移以及 github 同步</h3><h4 id="1-解决的问题"><a href="#1-解决的问题" class="headerlink" title="1.解决的问题:"></a>1.解决的问题:</h4><p>&emsp;&emsp;之前是通过hexo + gitpage 的方式来搭建的自己的博客，而后在想通过其他主机或者说自己的笔记本想重置或重装时，这时不得不保留hexo博客的必要文件以及将其<strong>迁移</strong>至新的主机并且需要和github上的博客项目进行<strong>同步</strong>。</p><h4 id="2-解决方式："><a href="#2-解决方式：" class="headerlink" title="2.解决方式："></a>2.解决方式：</h4><p>&emsp;&emsp;①迁移的解决:<a href="https://wungjyan.github.io/2018/08/17/move-hexo/" target="_blank" rel="noopener">迁移hexo</a>.<br>&emsp;&emsp;②同步的解决:<a href="https://blog.csdn.net/jingtingfengguo/article/details/51892864" target="_blank" rel="noopener">同步hexo到github</a>. </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;emsp;&amp;emsp;&lt;strong&gt;这个模块主要是用来记录一些经常遇见的常见问题，以免每次遇见同样的问题都必须像第一次遇见一样重复处理。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一-hexo-博客迁移以及-github-同步&quot;&gt;&lt;a href=&quot;#一-hexo-博客迁
+      
+    
+    </summary>
+    
+    
+      <category term="解决问题的方式" scheme="http://yoursite.com/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E6%96%B9%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>动态规划题解</title>
