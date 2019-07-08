@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="YangK" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;写在前头：以前学习数据结构与算法，太囫囵吞枣，要么简单的直接按自己的思路写出来，然后就不再想看优秀的解法，要么就直接看解法，模仿的过一遍，也就有一些临时记忆。这便会产生一种错觉，感觉自己在短时间内学会了这个算法，其实不然，可能在过几天你连这个算法的思路都说不清楚。所以现在这个板块便记录自己每次学习的算法，做一个总结，也为了以后如果忘记了可以当作笔记查阅。 一、动态规划1.动">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划题解">
+<meta property="og:url" content="http://yoursite.com/2019/06/26/动态规划/index.html">
+<meta property="og:site_name" content="YangK">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;写在前头：以前学习数据结构与算法，太囫囵吞枣，要么简单的直接按自己的思路写出来，然后就不再想看优秀的解法，要么就直接看解法，模仿的过一遍，也就有一些临时记忆。这便会产生一种错觉，感觉自己在短时间内学会了这个算法，其实不然，可能在过几天你连这个算法的思路都说不清楚。所以现在这个板块便记录自己每次学习的算法，做一个总结，也为了以后如果忘记了可以当作笔记查阅。 一、动态规划1.动">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626135258.png">
+<meta property="og:image" content="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626140755.png">
+<meta property="og:image" content="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626142917.png">
+<meta property="og:image" content="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626160419.png">
+<meta property="og:image" content="http://tie.027cgb.com/622253/leetCode/322/TIM%E6%88%AA%E5%9B%BE20190702164011.png">
+<meta property="og:image" content="http://tie.027cgb.com/622253/leetCode/322/TIM%E6%88%AA%E5%9B%BE20190702170351.png">
+<meta property="og:updated_time" content="2019-07-04T00:39:07.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态规划题解">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;写在前头：以前学习数据结构与算法，太囫囵吞枣，要么简单的直接按自己的思路写出来，然后就不再想看优秀的解法，要么就直接看解法，模仿的过一遍，也就有一些临时记忆。这便会产生一种错觉，感觉自己在短时间内学会了这个算法，其实不然，可能在过几天你连这个算法的思路都说不清楚。所以现在这个板块便记录自己每次学习的算法，做一个总结，也为了以后如果忘记了可以当作笔记查阅。 一、动态规划1.动">
+<meta name="twitter:image" content="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626135258.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/26/动态规划/">
+
+
+
+
+
+  <title>动态规划题解 | YangK</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YangK</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay Hungry Stay Foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YangK">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动态规划题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-26T14:53:38+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/26/动态规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/26/动态规划/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/26/动态规划/" class="leancloud_visitors" data-flag-title="动态规划题解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;<strong>写在前头：以前学习数据结构与算法，太囫囵吞枣，要么简单的直接按自己的思路写出来，然后就不再想看优秀的解法，要么就直接看解法，模仿的过一遍，也就有一些临时记忆。这便会产生一种错觉，感觉自己在短时间内学会了这个算法，其实不然，可能在过几天你连这个算法的思路都说不清楚。所以现在这个板块便记录自己每次学习的算法，做一个总结，也为了以后如果忘记了可以当作笔记查阅。</strong></p>
+<h3 id="一、动态规划"><a href="#一、动态规划" class="headerlink" title="一、动态规划"></a><strong>一、动态规划</strong></h3><h4 id="1-动态规划的思想"><a href="#1-动态规划的思想" class="headerlink" title="1.动态规划的思想"></a>1.动态规划的<strong>思想</strong></h4><p>&emsp;&emsp;动态规划算法通常用于求解具有某种最优性质的问题。在这类问题中，可能会有许多可行解。每一个解都对应于一个值，我们希望找到具有最优值的解。动态规划算法与分治法类似，其基本思想也是将待求解问题分解成若干个子问题，先求解子问题，然后从这些子问题的解得到原问题的解。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。若用分治法来解这类问题，则分解得到的子问题数目太多，有些子问题被重复计算了很多次。如果我们能够保存已解决的子问题的答案，而在需要时再找出已求得的答案，这样就可以避免大量的重复计算，节省时间。我们可以用一个表来记录所有已解的子问题的答案。不管该子问题以后是否被用到，只要它被计算过，就将其结果填入表中。这就是动态规划法的基本思路。具体的动态规划算法多种多样，但它们具有相同的填表格式。</p>
+<h4 id="2-动态规划应用"><a href="#2-动态规划应用" class="headerlink" title="2.动态规划应用"></a>2.动态规划应用</h4><p>&emsp;&emsp;在我接触的相关的算法中，求最优解、最大和、最短路径这类算法常用动态规划的思想来求解。</p>
+<h3 id="二、动态规划的题解"><a href="#二、动态规划的题解" class="headerlink" title="二、动态规划的题解"></a><strong>二、动态规划的题解</strong></h3><h4 id="1-从斐波那契数列了解动态规划"><a href="#1-从斐波那契数列了解动态规划" class="headerlink" title="1.从斐波那契数列了解动态规划"></a>1.从斐波那契数列了解动态规划</h4><p>&emsp;&emsp;定义：斐波那契数列指的是：从一个数列的第三位数开始(第1位与第2位的值均为1)，每一位的值都等于前面两位的和。<br>&emsp;&emsp;如图为斐波那契数列：<br><img src="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626135258.png" alt="斐波那契数列定义"><br>&emsp;&emsp;那么我们如何求解斐波那契数列呢？很直观的根据数列的数值之间的关系，我会想到用递归的方式去求解。因为第一个数和第二个数默认为1，那么第三个数的值第一个数 + 第二个数，第四个数的值为 第二个数 + 第三个数，所以第n个数的值就为第 n - 1 个数 + 第 n - 2 个数。所以求第n项的和，就是求n-1项和n-2项的和。很明显是利用子问题求解的一个过程。<br>&emsp;&emsp;如图为使用递归推导斐波那契数列的过程：<br><img src="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626140755.png" alt="递归求斐波那契的推到式"><br>&emsp;&emsp;所以我们就可以利用递归式和递归的跳出条件来求出斐波那契数列的值了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 斐波那契数列递归方式求解</span></span><br><span class="line"><span class="comment">* time:2019.6.26</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//不满足斐波那契数列直接返回-1</span></span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;好吧，如果是在以前，我做出了某个算法，我会很容易得到满足，但是现在，我用递归方式仅仅是求45的斐波那契数值，都等了三秒钟，这足可以看出递归的方式来求斐波那契是不合适的。<br>&emsp;&emsp;如图，可以看到递归求斐波那契的过程：<br><img src="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626142917.png" alt="递归求斐波那契的过程"><br>&emsp;&emsp;可以看出，圈红的递归式是重复的，并且重复是大量的，如果我们求7的斐波那契，那么整个6的斐波那契又会被重复的再次进行计算一次，所以递归的求解方式的时间复杂度是O(2的n次方)！我们现在可以考虑一个问题，因为子问题的结果会被后序计算使用到，那么为什么我们不把它给记录下来呢？而由于斐波那契的后序值只需要依赖于前两个数的和，所以我们每次将前两个数的和记录即可。而以这样的方式，我们只需要迭代一次数列即可，时间复杂度为O(n).<br>&emsp;&emsp;迭代记忆化的求解斐波那契：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 斐波那契数列迭代的方式</span></span><br><span class="line"><span class="comment">   * time:2019.6.26</span></span><br><span class="line"><span class="comment">   * */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (n &lt; <span class="number">1</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//记录第一个值</span></span><br><span class="line">       <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">       <span class="comment">//记录第二个值</span></span><br><span class="line">       <span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line">       <span class="comment">//记录前两个值的和</span></span><br><span class="line">       <span class="keyword">int</span> val = <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">           val = a + b;</span><br><span class="line">           a = b;</span><br><span class="line">           b = val;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> val;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;而以这样的方式，就算是求100,0000的斐波那契数值也在1秒内便得出了结果，所以，这便是同样的问题不同的解法产生的巨大的差异！而以这样的方式的求解过程，也有了一点DP思想的模子。</p>
+<h4 id="2-求一个数组中不相邻的数值的和的最大值"><a href="#2-求一个数组中不相邻的数值的和的最大值" class="headerlink" title="2.求一个数组中不相邻的数值的和的最大值"></a>2.求一个数组中不相邻的数值的和的最大值</h4><p>&emsp;&emsp;如一个数组是这样的：[1,<strong>4</strong>,3,<strong>5</strong>],那么最后和为下标第1个4和下标第三个5组成最大值9.<br>&emsp;&emsp;通常在这种情况下，我会以最后一个数值从后往前进行一个推理。以[1,4,3,5]为例，当我们选择5这个数的时候，那么它就不能选择3而只能选择4以前的，而当我们不选择5的时候，那么就可以选择3了。<br>&emsp;&emsp;如图：<br><img src="http://kan.027cgb.com/622253/TIM%E6%88%AA%E5%9B%BE20190626160419.png" alt="分析过程"><br>&emsp;&emsp;<strong>递归的方式</strong>:<br>&emsp;&emsp;递归的<strong>跳出条件</strong>：<br>&emsp;&emsp;(1).当只有一个数时，那么该数就是最大值<br>&emsp;&emsp;(2).当有两个数时，那么选择两个数中较大的值为最大值<br>&emsp;&emsp;递归代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: YangK</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/6/26 10:23</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 求不相邻的和的最大值,递归</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> array[<span class="number">0</span>];</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(array[<span class="number">0</span>],array[<span class="number">1</span>]);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> a = array[i] + solution(array,i - <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">int</span> b = solution(array,i - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> Math.max(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;显然，以递归的方式仍然会存在函数多次重复计算的操作，所以我们应该保存已经得到结果的位置的值，那么利用迭代的方式可以实现。<br>&emsp;&emsp;<strong>非递归实现方式</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: YangK</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@CreateDate</span>: 2019/6/26 10:23</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 求不相邻的和的最大值,非递归</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution1</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (array.length == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> array[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (array.length == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(array[<span class="number">0</span>],array[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    array[<span class="number">0</span>] = array[<span class="number">0</span>];<span class="comment">//1个元素的最大值</span></span><br><span class="line">    array[<span class="number">1</span>] = Math.max(array[<span class="number">0</span>],array[<span class="number">1</span>]);<span class="comment">//2个元素的最大值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; array.length; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> val =  Math.max(array[i] + array[i - <span class="number">2</span>],array[i - <span class="number">1</span>]);</span><br><span class="line">        array[i] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array[array.length - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;通过迭代的方式，我们将每次计算产生的最大值放在当前迭代的位置，那么当我们计算数组的最后一位时，它就是整个过程的最大值。</p>
+<h4 id="3-零钱兑换-leetCode-第322题"><a href="#3-零钱兑换-leetCode-第322题" class="headerlink" title="3.零钱兑换(leetCode 第322题)"></a>3.零钱兑换(leetCode 第322题)</h4><p>&emsp;&emsp;①题目描述: 给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。<br>&emsp;&emsp;首先要感谢在题解中 labuladong 这位用户对此题的详解思路，让我对动态规划加深了理解。<br>&emsp;&emsp;②初解此题：<br>&emsp;&emsp;最开始解这个题的时候，是按照 dp 的思路去思考的，但是由于对 dp 的造诣和理解太浅，写出了递归穷举所有情况的一种思路，毫无疑问，当事例过于复杂的时候就是因递归导致入栈过深导致 <strong>超时</strong> 或者 更恶劣的情况就是<strong>栈溢出</strong>了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 递归穷举所有结果，并且会产生重复冗余</span></span><br><span class="line"><span class="comment">* index:当前下标</span></span><br><span class="line"><span class="comment">* amount:总计次数</span></span><br><span class="line"><span class="comment">* count:总金额</span></span><br><span class="line"><span class="comment">* currentCount:当前累加的金额数</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> index, <span class="keyword">int</span> amount,<span class="keyword">int</span> count,<span class="keyword">int</span> currentCount)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当前金额小于总金额</span></span><br><span class="line">    <span class="keyword">if</span> (currentCount &lt; count)&#123;</span><br><span class="line">        <span class="comment">//考虑这是加到最后一个数</span></span><br><span class="line">        <span class="keyword">if</span> (index == array.length - <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> solution(array, index, amount + <span class="number">1</span>, count, currentCount + array[index]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * 最小值由三种情况组成:</span></span><br><span class="line"><span class="comment">        * 1.根据数组下标依次相加</span></span><br><span class="line"><span class="comment">        * 2.单个数组下标自身相加</span></span><br><span class="line"><span class="comment">        * 3.不考虑当前数组下标</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        * 通过递归穷举以上所有结果，找到一个最小值即满足题目要求</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">        <span class="keyword">int</span> min = Math.min(<span class="comment">/**情况1**/</span>solution(array, index + <span class="number">1</span>, amount + <span class="number">1</span>, count, currentCount + array[index]),<span class="comment">/**情况2**/</span>solution(array, index, amount + <span class="number">1</span>, count, currentCount + array[index]));</span><br><span class="line">        <span class="keyword">return</span> Math.min(min,<span class="comment">/**情况3**/</span>solution(array,index + <span class="number">1</span>,amount,count,currentCount));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (currentCount == count)&#123;</span><br><span class="line">        <span class="keyword">return</span> amount;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//不满足条件返回最大值</span></span><br><span class="line">        <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;说实话，就连我自己今天再看一遍自己的代码，都要思考好久…，因为这也是磕磕绊绊才写出来的，所以，阅读性强的代码那一定是思路清晰才能够写得出来的。<br>&emsp;&emsp;②让我们再看看同样是穷举所有情况的递归代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> amount)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (amount == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="comment">//超出金额</span></span><br><span class="line">        <span class="keyword">if</span> (amount - array[i] &lt; <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> subProb = solution(array, amount - array[i]);</span><br><span class="line">            <span class="keyword">if</span> (subProb == -<span class="number">1</span>)<span class="keyword">continue</span>;</span><br><span class="line">            ans = Math.min(ans, subProb + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans == Integer.MAX_VALUE ? -<span class="number">1</span> : ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;好的代码是简单清晰的，而上面就是一个很好的例子。<br>&emsp;&emsp;那么让我们来看看上面的代码产生超时的原因吧，如下图所示:<br>&emsp;&emsp;<strong>例子: 硬币面值:[1,2,5]，总金额:11。</strong><br><img src="http://tie.027cgb.com/622253/leetCode/322/TIM%E6%88%AA%E5%9B%BE20190702164011.png" alt="递归细节"><br>&emsp;&emsp;那么根据上图我们需要两个5元+一个1元三块硬币获得11元的总金额。但是通过递归产生了太多重复计算了(红色圈住的),这就是耗时的原因，所以我们应该通过一个数组(<strong>备忘录</strong>)来记录每种金额的最优组合，当更大的金额需要求最优组合时便可以借助此数组。<br>&emsp;&emsp;③带有备忘录的解法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 带有备忘录的递归算法,自顶向下</span></span><br><span class="line"><span class="comment">* memo:存放每种金额的最优解</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> amount,<span class="keyword">int</span>[] memo)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (amount == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (memo[amount] != -<span class="number">2</span>) <span class="keyword">return</span> memo[amount];</span><br><span class="line">    <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> coin : array)&#123;</span><br><span class="line">        <span class="keyword">if</span> (amount - coin &lt; <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> sub = solution(array,amount - coin,memo);</span><br><span class="line">        <span class="keyword">if</span> (sub == -<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        ans = Math.min(ans,sub + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    memo[amount] = (ans == Integer.MAX_VALUE) ? -<span class="number">1</span> : ans;</span><br><span class="line">    <span class="keyword">return</span> memo[amount];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;计算过的结果直接从数组中找，从而去掉了第一种重复计算的时间，但是这种方式在leetCode上已经不会出现超时了，但是它的每个子结构的计算过程依然很复杂。<br>&emsp;&emsp;如图 memo 备忘录数组的好处:<br>&emsp;&emsp;④动态规划:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//动态规划，自低向上</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution1</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> amount)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[amount + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dp.length; i++)&#123;</span><br><span class="line">        dp[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; amount; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> coin : array)&#123;</span><br><span class="line">            <span class="keyword">if</span> (coin &lt;= i)&#123;</span><br><span class="line">                dp[i] = Math.min(dp[i],dp[i - coin] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amount] &gt; amount ? - <span class="number">1</span> : dp[amount];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;如图动态规划求最优解的过程:<br><img src="http://tie.027cgb.com/622253/leetCode/322/TIM%E6%88%AA%E5%9B%BE20190702170351.png" alt="备忘录数组"><br>&emsp;&emsp;通过总金额为1和5的最优解得到总金额为11的最优解、通过总金额为3的最优解得到总金额为6的最优解。这便是动态规划的思想，层层递进、一步一步的不含一点冗余。<br>&emsp;&emsp;总结：通过慢慢的做题、一行一行的去理解别人的代码和对代码的解释，我终于是对动态规划有了更多的认识，我认为一个知识不是看一遍或者背一遍就能理解的，而是需要大量的思考和验证才能真正去了解一个知识，这是我这道题做完最大的感受！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果您认为我的博客有帮助到您，欢迎打赏鼓励我哟~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Yang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Yang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/对技术的思考之网络/" rel="next" title="计算机网络">
+                <i class="fa fa-chevron-left"></i> 计算机网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.png" alt="Yang">
+            
+              <p class="site-author-name" itemprop="name">Yang</p>
+              <p class="site-description motion-element" itemprop="description">A blog about technical gains</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/codersheepyang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                一个Java开发小伙伴的blog
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://springlych.github.io/" title="click me" target="_blank">click me</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、动态规划"><span class="nav-number">1.</span> <span class="nav-text">一、动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-动态规划的思想"><span class="nav-number">1.1.</span> <span class="nav-text">1.动态规划的思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态规划应用"><span class="nav-number">1.2.</span> <span class="nav-text">2.动态规划应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、动态规划的题解"><span class="nav-number">2.</span> <span class="nav-text">二、动态规划的题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从斐波那契数列了解动态规划"><span class="nav-number">2.1.</span> <span class="nav-text">1.从斐波那契数列了解动态规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-求一个数组中不相邻的数值的和的最大值"><span class="nav-number">2.2.</span> <span class="nav-text">2.求一个数组中不相邻的数值的和的最大值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-零钱兑换-leetCode-第322题"><span class="nav-number">2.3.</span> <span class="nav-text">3.零钱兑换(leetCode 第322题)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'AuqJw6Dql7AsHItOzSRuDV4l-gzGzoHsz',
+        appKey: 'QsqvX2kOptncJ8x43VwbqsdC',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'/uploads/svdb.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AuqJw6Dql7AsHItOzSRuDV4l-gzGzoHsz", "QsqvX2kOptncJ8x43VwbqsdC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
