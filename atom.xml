@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-16T13:35:51.413Z</updated>
+  <updated>2019-07-18T14:26:00.453Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>T-SQL学习笔记</title>
+    <link href="http://yoursite.com/2019/07/18/T-SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/07/18/T-SQL学习笔记/</id>
+    <published>2019-07-18T14:15:54.000Z</published>
+    <updated>2019-07-18T14:26:00.453Z</updated>
+    
+    <content type="html"><![CDATA[<p>一.在做T-SQL测试题中<strong>产生的问题</strong>并找到<strong>解决方式</strong>：<br>1.表主键(int类型)设置<strong>主键自增</strong>：<br>&emsp;&emsp;指定Identity属性，例子：column_name type IDENTITY [ (seed , increment) ]，seed 为初始值，increment 为增量。<br>2.sql server 注释的方式：<br>&emsp;&emsp;单行注释：–多行注释：/<em>……</em>/<br>3.varchar 和 nvarchar 区别：<br>&emsp;&emsp;链接：<a href="https://www.cnblogs.com/wangshenhe/archive/2012/09/18/2690136.html，对两者描述比较清晰。" target="_blank" rel="noopener">https://www.cnblogs.com/wangshenhe/archive/2012/09/18/2690136.html，对两者描述比较清晰。</a><br>4.创建 时间字段时<strong>获取当前时间</strong>:<br>&emsp;&emsp;字段名 datetime default <strong>getdate()</strong>为指定字段创建索引：<a href="https://www.cnblogs.com/selene/p/4474721.html，从索引特点到如何创建索引，比较详细。" target="_blank" rel="noopener">https://www.cnblogs.com/selene/p/4474721.html，从索引特点到如何创建索引，比较详细。</a><br>5.如何选择余额的数据类型？<br>&emsp;&emsp;应当根据业务需要在 Numric,Decimal,Money 中选择一个，详细区别：<a href="https://www.cnblogs.com/EasonJim/p/4837079.html。" target="_blank" rel="noopener">https://www.cnblogs.com/EasonJim/p/4837079.html。</a><br>6.当需要一个描述0或1来代表false or true 的状态值时，应当使用 <strong>bit</strong> 数据类型：&emsp;&emsp;<a href="https://blog.csdn.net/findmyself_for_world/article/details/50203195" target="_blank" rel="noopener">https://blog.csdn.net/findmyself_for_world/article/details/50203195</a><br>7.使用alter设置外键：<br>&emsp;&emsp;添加外键：alter table 表名 add constraint 外键名 foreign key (字段名) references 关联的表名(关联的字段名) 。<br>&emsp;&emsp;删除外键：alter table 表名 drop constraint 外键名。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一.在做T-SQL测试题中&lt;strong&gt;产生的问题&lt;/strong&gt;并找到&lt;strong&gt;解决方式&lt;/strong&gt;：&lt;br&gt;1.表主键(int类型)设置&lt;strong&gt;主键自增&lt;/strong&gt;：&lt;br&gt;&amp;emsp;&amp;emsp;指定Identity属性，例子：colum
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一个新的开始</title>
+    <link href="http://yoursite.com/2019/07/18/%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <id>http://yoursite.com/2019/07/18/一个新的开始/</id>
+    <published>2019-07-18T14:11:04.000Z</published>
+    <updated>2019-07-18T14:17:03.674Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;7.16日，一个不一样的日子，因为今天是我作为实习生入职新蛋的第一天。带着激动的心情早上还下着小雨，第一天竟然还因为走错路而挤了一个早高峰的地铁。入职第一天肯定是不会直接参与项目或者办公什么的啦，而是对我们进行了一天的公司文化的熏陶。一开始当然是每个人做一个简单的自我介绍，做完自我介绍后进行了一个记忆力的小游戏，而我也恰恰就是两个游戏输家的一个，所以在中午也唱了我比较喜欢的一首歌《小幸运》。然后就开始了公司的介绍，从招聘、薪资、绩效、安全，再到部门、公司业务等讲了公司的整体架构，而我也带着100分的精神一直听到结束，最后给我安排到了一个做仓库业务的部门 OZZO 部，并且安排了一位部门内的导师，而在今天(7.17)导师也很友好的了解了一下我的情况并且告诉了我接下来应该做什么以及应该侧重什么，让我在近期也对该看什么有了一定的方向。第一天，很激动的开始也很快的结束了，我感受到的是大家的友好、热情以及对我们到来真正的开心，所以在接下来的日子我也需要加油啦~<br>&emsp;&emsp;明天（7.18）就是正式开始培训的第一天，培训内容大致是 数据库 -&gt; 后端 -&gt; 前端 -&gt; 测试这样的课程安排，我觉得我更应该打起100分的精神去听，课下除了做出布置的内容也应该去做一些拓展和思考，这样才能更加理解以便在后续再把理论变成实践，这可已经不是学校理论的背背背和仅仅是简单的写个Demo的事情了，而是需要付诸努力去考虑它的应用场景以及实践，这才可以在项目大作业中头脑清晰、比较轻松的完成。不管怎样，现在都应该慢慢去调整自己了，学校是学习的个人学习的地方，而公司是团队协作的地方，怎样做好自己，和团队好好沟通是我接下来应该去学习的东西，这样才能产生自己的价值，为公司创造价值，慢慢去寻找方式吧，该学习的地方还很多！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;emsp;&amp;emsp;7.16日，一个不一样的日子，因为今天是我作为实习生入职新蛋的第一天。带着激动的心情早上还下着小雨，第一天竟然还因为走错路而挤了一个早高峰的地铁。入职第一天肯定是不会直接参与项目或者办公什么的啦，而是对我们进行了一天的公司文化的熏陶。一开始当然是每个
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>为第一家公司的入职做好准备~</title>
